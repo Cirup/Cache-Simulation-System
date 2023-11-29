@@ -33,8 +33,8 @@ On the other hand in random sequence, the memory locations are accessed in a non
 
 with that being said the sequence would look like this where:
 	
- 	n = 8
-	number of sequence = 4n = 32 
+ 	n = 16
+	number of sequence = 4n = 64 
 OUTPUT: 
 ![github-small](images/Final_Snapshot_Random.png)
 
