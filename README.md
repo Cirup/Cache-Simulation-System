@@ -12,6 +12,10 @@
 3. Choose between showing either step-by-step simulation or the final cache snapshot
 3. At the end, the output will be displayed
 
+### DEMO Walk Through:
+	Link https://youtu.be/bKOnV4boGns
+ 
+
 ## Detailed Test Case Analysis
 Let the user input n be the number of memory blocks to be mapped to cache.
 
