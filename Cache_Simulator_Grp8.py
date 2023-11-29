@@ -71,8 +71,7 @@ def sequential_sequence(num_blocks):
     return sequence * 4
 
 def random_sequence(num_blocks):
-    sequence = random.sample(range(4 * num_blocks), 4 * num_blocks)
-    return sequence
+    return [random.randint(0, 2 * num_blocks - 1) for i in range(4 * num_blocks)]  
 
 def mid_repeat_blocks(num_blocks):
     sequence = [0] + (list(range(1, num_blocks-1)) * 2) + list(range(num_blocks-1, 2 * num_blocks))
@@ -135,8 +134,6 @@ def step_by_stepCache(set0, set1):
             age_label.grid(row=(r*2) + 2, column=col + 1, padx=1)
 
 
-
-
 def simulate_step_by_step(cache, block_sequence, index, result_labels):
     if index >= len(block_sequence):
         return
@@ -147,6 +144,7 @@ def simulate_step_by_step(cache, block_sequence, index, result_labels):
 
     block_addr = block_sequence[index]
     is_hit = cache.access_block(block_addr)
+    cache_line = 32
 
     last_set1 = cache.sets[-1]
     last_set0 = cache.sets[-2]
@@ -157,9 +155,9 @@ def simulate_step_by_step(cache, block_sequence, index, result_labels):
     hit_rate = (cache.hit_count / total_accesses) * 100
     miss_rate = 100 - hit_rate
     miss_count = total_accesses - cache.hit_count
-    miss_penalty = 1 + (10 + ((10 * total_accesses) / 2))
-    avg_time = (cache.hit_count / total_accesses) * 1 + (1 - (cache.hit_count / total_accesses)) * miss_penalty
-    total_time = (cache.hit_count * (total_accesses * 1)) + (miss_count * (1 + (total_accesses * 10)))
+    miss_penalty = 1 + ((10 + (10 * cache_line)) / 2)
+    avg_time = round((cache.hit_count / total_accesses) * 1 + (1 - (cache.hit_count / total_accesses)) * miss_penalty)
+    total_time = round((cache.hit_count * (cache_line * 1)) + (miss_count * (cache_line * (1 + 10))))
 
     result_labels['total_accesses'].config(text="Memory Access Count: " + str(total_accesses))
     result_labels['hit_count'].config(text="Cache Hit Count: " + str(cache.hit_count))
@@ -183,6 +181,7 @@ def StartSimulation(block_sequence):
         num_sets = 2
         n_way = 8
         num_cache = 16
+        cache_line = 32
 
         cache = Cache(num_sets, n_way)
         cache.hit_count = 0
@@ -215,9 +214,9 @@ def StartSimulation(block_sequence):
             hit_rate = (hit_count / total_accesses * 100) 
             miss_rate = 100 - hit_rate
             miss_count = total_accesses - hit_count
-            miss_penalty =  1 + ( 10 + ((10*len(block_sequence)))/2 )
-            avg_time = (hit_count / total_accesses)*1 + (1- (hit_count / total_accesses))*miss_penalty
-            total_time = (hit_count * (len(block_sequence)*1)) + (miss_count * ( 1 + (len(block_sequence)*10)))
+            miss_penalty =  1 + ((10 + (10*cache_line)) / 2) 
+            avg_time = round((hit_count / total_accesses)*1 + (1- (hit_count / total_accesses))*miss_penalty)
+            total_time = round((hit_count * cache_line * 1) + (miss_count * (cache_line*(10 + 1))))
 
             result_labels['total_accesses'].config(text="Memory Access Count: " + str(total_accesses))
             result_labels['hit_count'].config(text="Cache Hit Count: " + str(hit_count))
