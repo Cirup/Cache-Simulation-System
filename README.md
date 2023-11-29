@@ -23,7 +23,7 @@ Let us run through the sequence where:
 	number of sequence = 2(16) * 4 = 128 sequences
 	The output it generates
 
-![github-small](images\final_snapshot_sequential.jpg)
+![github-small](images/final_snapshot_sequential.jpg)
 	
 
 ### Random sequence: containing 4n blocks.
