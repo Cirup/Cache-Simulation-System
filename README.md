@@ -16,9 +16,10 @@
 Let the user input n be the number of memory blocks to be mapped to cache.
 
 ### Sequential sequence
-Let us run through the sequence where: <br>
+Let us run through the sequence where:
+
     n = 16 <br>
-    number of sequence = 2(16) * 4 = 128 sequences <be>
+    number of sequence = 2(16) * 4 = 128 sequences
 
 ![sequential-output](images/Final_Snapshot_Sequential.png)
 
@@ -28,6 +29,7 @@ In a sequential sequence, we assume that the reading of the main memory sequence
 In a random sequence, the memory blocks are accessed in a non-sequential order. For this case, the total number of memory blocks to be mapped is 4n. This means that if the user input is n, the total number of blocks is 4n, and the range of the memory block addresses is from 0-(4n-1). In cases where there is a cache hit, the set where the block belongs would be identified and every block of that set would be checked. Since the block address already exists in the cache, the age of the cache block containing the address would be reset to zero, and all the other cache block ages are updated accordingly. In cache misses, the corresponding set is checked to see if there is still available space. If there is none, according to the LRU replacement policy, the block address is stored in the cache block with the highest age. 
 
 With that being said, for the output in random sequence:
+
  	n = 16
 	number of memory blocks to be mapped = 4n = 64 
 
