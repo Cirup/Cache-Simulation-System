@@ -1,28 +1,33 @@
-# Cache-Simulation-System
-CSARCH2 Project Simulation
+# CSARCH2 Cache Simulation
+## Cache System Specifications:
+- Type: 8-Way Block Set Associative + Load Through
+- Number of cache blocks = 16 blocks
+- Cache line = 32 words
+- Read policy: load-through
+- Number of memory blocks = user input
 
-Project Specifications:
-Design a cache simulation system and analyze the various test set scenarios of the assigned cache mapping and
-replacement policy.
+## How the program works?
+1. Input Number of Memory Blocks
+2. Choose option for sequence of memory block - (Sequential, Random, Mid-Way Repeat)
+3. Choose between by steps-by-step simulation or final snapshot
+3. At the end, output will be displayed and final cache memory allocated
 
-Type of Cache Memory: 8-way BSA + LRU
+## Detail Test Case Analysis
+Let us assume n = # of cache block = 16
 
-General Directions:
-- Application platform: Stand-alone or web-based. Regardless, there should be a GUI (graphics user
-interface) instead of “text "-based output.
-- Programming languages: any programming languages (C, Java, assembly language, Python, etc.).
-- Application repository (source code and analysis writeup): GitHub (make sure that I can access it).
+### Sequential sequence
+In a sequential sequence, we assume that reading of main memory sequence is in a consecutive block order and it will be repeated 4 times. 
 
-Common Specifications:
-1. Number of cache blocks = 16 blocks
-2. Cache line = 32 words
-3. Read policy: load-through
-4. Number of memory blocks = user input
+Let us run through the sequence where: 
+    n = 16
+	number of sequence = 2(16) * 4 = 128 sequences
+	The output it generates
 
-Test cases (n is the number of cache blocks): 
-1. Sequential sequence: up to 2n cache block. Repeat the sequence four times. Example: 0,1,2,3,...,2n-1 {4x}
-2. Random sequence: containing 4n blocks.
-3. Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
+![github-small](images\final_snapshot_sequential.jpg)
+	
+
+### Random sequence: containing 4n blocks.
+### Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
 which continue up to 2n. Then, repeat the sequence four times. Example: if n=8, sequence=0, 1,2,3,4,5,6,
 1,2,3,4,5,6, 7,8,9,10,11,12,13,14,15 {4x}
 
@@ -37,4 +42,3 @@ Output:
 * Note: the source code /executable program (stand-alone) or link to the web-based app, as well as the video
 and analysis writeup, should all be in GitHub.
 * Project demo if needed. Either face-to-face or through Zoom.
-
