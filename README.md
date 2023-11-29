@@ -20,7 +20,7 @@ Let us run through the sequence where:
     n = 16 <br>
     number of sequence = 2(16) * 4 = 128 sequences <br>
 
-![sequential-output](images/Final_Snapshot_Sequential.jpg)
+![sequential-output](images/Final_Snapshot_Sequential.png)
 
 In a sequential sequence, we assume that reading of main memory sequence is in a consecutive block order and it will be repeated 4 times. The block that is being access will first be modulo by number of sets (2), this will determine in what set it will be placed and since BSA also has the characteristic of FA, it can be placed in any block. From the output, there is no cache hit that was recorded this due to the structure of the sequence and notice how even blocks are placed in Set 0 and odd blocks are placed in Set 1. Since number of cache blocks is less than number of sequences read and the replacement algorithm used is LRU - Least Recently Used, upon repetition of the sequence there is no chance of cache hit since it is overidden by other blocks. However, if the number of cache block is greater than number of sequence being read, there will be a chance of cache hit upon repetition. Overall, using a repeating sequential sequence in a 8-Way BSA with 16 cache blocks is a heavy toll for the cache system as there is a low chance of getting a cache hit.
 
