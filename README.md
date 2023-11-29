@@ -16,9 +16,9 @@
 Let us assume n = # of cache block = 16
 
 ### Sequential sequence
-Let us run through the sequence where: 
-    n = 16 <br>
-    number of sequence = 2(16) * 4 = 128 sequences <br>
+Let us run through the sequence where:
+    n = 16
+    number of sequence = 2(16) * 4 = 128 sequences
 
 ![sequential-output](images/Final_Snapshot_Sequential.png)
 
